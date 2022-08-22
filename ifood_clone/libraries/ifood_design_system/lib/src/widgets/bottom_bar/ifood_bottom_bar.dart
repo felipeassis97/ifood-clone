@@ -32,10 +32,47 @@ class _IfoodBottomBarState extends State<IfoodBottomBar> {
       },
       items: List.from(
         widget.items.map(
-          (item) =>
-              BottomNavigationBarItem(icon: Icon(item.icon), label: item.label),
+          (item) => BottomNavigationBarItem(
+            icon: BottomIconBar(
+              icon: item.icon,
+              countBage: item.countBage,
+            ),
+            label: item.label,
+            activeIcon: BottomIconBar(
+              icon: item.activeIcon,
+              countBage: item.countBage,
+            ),
+          ),
         ),
       ),
     );
+  }
+}
+
+class BottomIconBar extends StatelessWidget {
+  final IconData icon;
+  final int countBage;
+  const BottomIconBar({Key? key, required this.icon, required this.countBage})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return countBage > 0
+        ? Stack(clipBehavior: Clip.none, children: [
+            Icon(icon),
+            Positioned(
+              right: -5,
+              top: -5,
+              child: CircleAvatar(
+                backgroundColor: Colors.red,
+                radius: 8,
+                child: Text(
+                  '$countBage',
+                  style: const TextStyle(color: Colors.white, fontSize: 10),
+                ),
+              ),
+            ),
+          ])
+        : Icon(icon);
   }
 }

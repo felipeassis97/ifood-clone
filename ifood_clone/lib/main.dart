@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ifood_clone/src/features/home/view/pages/home_page.dart';
+import 'package:ifood_clone/src/features/dashboard/view/pages/dashboard_page.dart';
 
 void main() {
   runApp(const IfoodApp());
@@ -17,7 +17,7 @@ class IfoodApp extends StatelessWidget {
         primarySwatch: Colors.red,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const DashboardPage(),
     );
   }
 }
